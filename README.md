@@ -161,49 +161,51 @@ At the top right side of the panel, click the **Download plan** button. This wil
 
 You can explode this zip file bundle to see all the artifacts that TA provides, including a **README** file that gives you step by step instructions on how to use the bundle. You will use this bundle in the next section of the lab.
 
-## 2. Modernize your application
+## 2. Updating the application to run on Enterprise Application Service for Java
 
-### Clone the GitHub repo
+For this step, we will start with the source for the applications which you discovered, assessed and planned in step 1.
 
-1. Clone the ModResorts application.
+### Clone the ModResorts GitHub repo
+
+1. In a terminal, clone the ModResorts application.
    
     ```bash
     cd /home/admin
     git clone https://github.com/techxchange2024/mod-resorts.git
     ```
 
-## Experiencing Watsonx Code Assistant for Enterprise Java Applications
+## Experiencing watsonx Code Assistant for Enterprise Java Applications
 
-This section will provide guidance on the usage of the features of Watsonx Code Assistant for Enterprise Java Applications.
+This section will provide guidance on the usage of the features of watsonx Code Assistant for Enterprise Java Applications.
 
-### WebSphere Application Server modernization to Liberty with Watsonx Code Assistant for Enterprise Java Applications Eclipse IDE plugin
+### WebSphere Application Server modernization to Liberty with watsonx Code Assistant for Enterprise Java Applications Eclipse IDE plugin
 
-First, let’s start with **Eclipse IDE**. Please Locate and launch the Eclipse IDE from the Activities task bar.
+First, let’s start with **Eclipse IDE**. Locate and launch the Eclipse IDE from the Activities task bar.
 
-1. After launching Eclipse, please import the ModResorts app as a Maven project by going to the
+1. After launching Eclipse, import the ModResorts app as a Maven project by going to the
     **File** drop-down menu in the top left corner, then selecting
     **Import -\> Maven -\> Existing Maven Projects**.
 
-1. Please note that to access Watsonx Code Assistant for Enterprise Java Applications, you will need to log in using the API key from IBM Cloud. Your instructor will provide you with the necessary API key. In Eclipse IDE, you can find the Watsonx Code Assistant for Enterprise Java Applications tab in the top panel of the interface.
+2. Please note that to access watsonx Code Assistant for Enterprise Java Applications, you will need to log in using the API key from IBM Cloud. Your instructor will provide you with the necessary API key. In Eclipse IDE, you can find the watsonx Code Assistant for Enterprise Java Applications tab in the top panel of the interface.
 
     <div align="center">
         <img src="./images/wca-icon.png">
     </div>
 
-    After successfully logging into Watsonx Code Assistant for Enterprise Java Applications, you should see a greeting message from Watsonx Code Assistant for Enterprise Java Applications in the chat panel.
+    After successfully logging into watsonx Code Assistant for Enterprise Java Applications, you should see a greeting message from watsonx Code Assistant for Enterprise Java Applications in the chat panel.
 
     <div align="center">
         <img src="./images/wca-greeting.png">
     </div>
 
-1.  To ensure that the project is properly configured with the dependencies for the WebSphere Application Server APIs, please run the following commands in a terminal window to install the required dependencies into your local Maven project.
+3.  To ensure that the project is properly configured with the dependencies for the WebSphere Application Server APIs, please run the following commands in a terminal window to install the required dependencies into your local Maven project.
 
     ```bash
     cd mod-resorts
     mvn install:install-file -Dfile="was-dependency/was_public.jar" -DpomFile="was-dependency/was_public-9.0.0.pom"
     ```
 
-1.  The application was configured and written using **traditional WebSphere Application Server** code, Watsonx Code Assistant for Enterprise Java Applications supports an automated AI powered feature to modernize this application to use the latest WebSphere Liberty Server. To access this feature, right-click on the project and select **Watsonx Code Assistant for Enterprise Java Applications → Modernize to Liberty**. You should see the Watsonx Code Assistant for Enterprise Java Applications extension interface.
+4.  The application was configured and written using **traditional WebSphere Application Server** code, watsonx Code Assistant for Enterprise Java Applications supports an automated AI powered feature to modernize this application to use the latest WebSphere Liberty Server. To access this feature, right-click on the project and select **watsonx Code Assistant for Enterprise Java Applications → Modernize to Liberty**. You should see the watsonx Code Assistant for Enterprise Java Applications extension interface.
 
     <div align="center">
         <img src="./images/wca-modernize.png">
@@ -220,7 +222,12 @@ First, let’s start with **Eclipse IDE**. Please Locate and launch the Eclipse 
         <img src="./images/wca-modernize-tab.png">
     </div>
 
-1.  The tool has two options to migrate the project to Liberty, you can either **upload the migration bundle** which will provide Watsonx Code Assistant for Enterprise Java Applications with analysis and important configuration files to migrate to WebSphere Liberty or use the **binary scanner** if a migration bundle is not available. Note that using the migration bundle is recommended because it has been generated with the configuration information from where the Java application is running, while the binary scanner will not be able to obtain this information. The migration bundle option will be used in this demo. Please locate and open the bundle zip file you built and downloaded using `Transformation Advisor`.
+5.  WCA has two options to migrate the project to Liberty:
+    1.  **Upload the migration bundle** exported for Transformation Advisor, which will provide watsonx Code Assistant with the artefacts required to migrate the application.
+    2. Use the **binary scanner** if a migration bundle is not available. 
+ 
+    Note that using the migration bundle is recommended because it has been generated with the configuration information from where the Java application is running, while the binary scanner will not be able to obtain this information. The migration bundle option will be used in this lab. Please locate and open the bundle zip file you built and downloaded using `Transformation Advisor`.
+
     <div align="center">
         <img src="./images/wca-start-modernize-msg.png">
     </div>
@@ -229,26 +236,26 @@ First, let’s start with **Eclipse IDE**. Please Locate and launch the Eclipse 
         <img src="./images/wca-start-scan.png">
     </div>
 
-1. Watsonx Code Assistant for Enterprise Java Applications will extract configuration files, including `server.xml` and `Containerfile`, from the migration bundle. The `server.xml` file contains the application's configuration, while the `Containerfile` can be used to build a Liberty image of your application. After reviewing these files, add them to the project folder by clicking on **Add Files to Project** to apply the changes.
+6.  watsonx Code Assistant for Enterprise Java Applications will extract configuration files, including `server.xml` and `Containerfile`, from the migration bundle. The `server.xml` file contains the application's runtime configuration. The `Containerfile` can be used to build a container image for your applications. Enterprise Application Service only needs your application source and runtime configuration, so the `Containerfile` is not used. After reviewing these files, add them to the project folder by clicking on **Add Files to Project** to apply the changes.
 
     <div align="center">
         <img src="./images/wca-add-files.png">
     </div>
 
-1.  Next, a modernization issues list will be presented with the must fix issue detected by Watsonx Code Assistant for Enterprise Java Applications. You can review each issue in detail by clicking on the expand button on the right-hand side of each item. The **Additional information** tab highlights other issues you should be aware of when migrating your application, though these do not require code changes. After the review is complete, click the **Run auto-fixes** button to apply the necessary changes.
+7.  Next, a modernization issues list will be presented with the must fix issue detected by watsonx Code Assistant for Enterprise Java Applications. You can review each issue in detail by clicking on the expand button on the right-hand side of each item. The **Additional information** tab highlights other issues you should be aware of when migrating your application, though these do not require code changes. After the review is complete, click the **Run auto-fixes** button to apply the automated changes (Note, these are the same `rewrite` changes you could have applied using maven and gradle with the configuration from Transformation Advisor. Applying them in WCA is easier as it doesn't require you to customize and run a build).
 
     <div align="center">
         <img src="./images/wca-issues-list-sm.png">
     </div>
 
-1.  After the auto-fix is completed, click on **Build and Refresh** to
+8.  After the auto-fix is completed, click on **Build and Refresh** to
     refresh the list. All the listed issue should be resolved.
 
     <div align="center">
         <img src="./images/wca-resolved-list.png">
     </div>
 
-1.  Once migration is completed, you can add the Liberty maven plugin in the **pom.xml** file:
+9.  Once migration is completed, add the Liberty maven plugin configuration in the **pom.xml** file.  This plugin makes it easy to build and test the application locally using the Liberty runtime.  This is the same runtime used in Enterprise Application Service for Java:
 
     ```bash
     <plugin>
@@ -258,7 +265,7 @@ First, let’s start with **Eclipse IDE**. Please Locate and launch the Eclipse 
     </plugin>
     ```
 
-1.  Additonal, add links to the Db2 and MQ drivers. First we copy the drivers by add the following `resources` to the **pom.xml** file:
+10. Additonally, add links to the Db2 and MQ drivers. First we copy the drivers by adding the following `resources` to the **pom.xml** file:
 
     ```bash
     <resources>
@@ -290,38 +297,34 @@ First, let’s start with **Eclipse IDE**. Please Locate and launch the Eclipse 
     <resourceAdapter id="mqJmsRa" location="${shared.config.dir}/lib/global/wmq.jmsra.rar">
     ```
 
-1.  Run the application in Liberty developer mode in the same terminal used in step 3. To view the application, please visit <http://localhost:9080/resorts>.
+11. Run the application in Liberty Dev Mode in the same terminal used in step 3. Dev Mode is an interactive developer experience where you can make changes to your application or configuration and Dev Mode automatically updates the application to give you immediate feedback. You can also press **Enter** to run application test cases. To view the running application, visit <http://localhost:9080/resorts>.
 
     ```bash
     mvn liberty:dev
     ```
 
-1.  After you are finished checking out the application, stop the Liberty instance by pressing **CTRL+C** in the command-line session where you ran Liberty. Alternatively, you can run the **liberty:stop** goal from the current directory in another shell session:
+12. After you are finished checking out the application, stop the Liberty instance by pressing **CTRL+C** in the command-line session where you ran Liberty. 
 
-    ```bash
-    mvn liberty:stop
-    ```
+## 3. Deploy application to cloud using IBM Enterprise Application Service for Java
 
-## 3. Deploy application to cloud using IBM Enterprise Application Service for Java (EASeJ)
-
-Now that we have modernized our ModResorts application to use the Java **Liberty Runtime**, we will now need to deploy it to IBM Cloud. To accomplish this, we will be using the IBM EASeJ service.  
+Now that we have modernized our ModResorts application to use the Java **Liberty Runtime**, we can build and deploy it in Enterprise Application Service for Java.
 
 Provide the instructor with your email address associated with your GitHub account. You will then be assigned a student number that you can use throughout this section of the lab.
 
-For convenience, each student will be given authorization to access to the following:
+For convenience, each student will be given authorization to access the following:
 
 - GitHub Organization - **techxchange2024**
 - GitHub **source** repo - **student-source-{number}**
 - GitHub **config** repo - **student-config-{number}**
 - IBM SaaS account - **techxchange2024-saas**
-- IBM Application Flow subscription - **Application Flow**
-- IBM EASeJ Service Instance - **student-{number}**
+- IBM Enterprise Application Service subscription - **Application Flow**
+- IBM Enterprise Application Service service instance - **student-{number}**
 
->**NOTE**: The **source** repo contains the "Liberty converted" version of the ModResorts app that we updated in the last section.
+>**NOTE**: To save time and eliminate any mistakes made in the previous step, the **source** repository already contains the ModResorts app with the changes applied to run on Liberty.
 
->**IMPORTANT**: You will receive an email regarding access to the **techxchange2024** GitHub Organization. You must accept accept the invitation in order to complete this section of the lab.
+>**IMPORTANT**: You will receive an email regarding access to the **techxchange2024** GitHub Organization. You must accept the invitation in order to complete this section of the lab.
 
-### Access your EASeJ service instance
+### Access your Enterprise Application Service service instance
 
 1. Use this link to start:
 
@@ -331,7 +334,7 @@ For convenience, each student will be given authorization to access to the follo
         <img src="./images/saas-accounts.png">
     </div>
 
-    Select the **techxchange2024-saas** account and click **Next**.
+    Click on the **techxchange2024-saas** tile to view the account details.
 
 1. Click the **View instances** link to bring up the **Instance** list.
 
@@ -339,7 +342,7 @@ For convenience, each student will be given authorization to access to the follo
         <img src="./images/saas-subscription-details.png">
     </div>
 
-1. Select your instance.
+1. Select your instance (it should be the only one with a clickable link).
 
     <div align="center">
         <img src="./images/saas-instance-list.png">
@@ -347,10 +350,9 @@ For convenience, each student will be given authorization to access to the follo
 
     From the list of instances, **Open** the instance associated with your student number.
 
+### Configure GitHub repos for your Enterprise Application Service service instance
 
-### Configure GitHub repos for your EASeJ instance
-
-1. Since no GitHub repos have been assigned to your instance, you will see the following panel:
+1. Since no GitHub repos have been configured to your service instance, you will need to do this now. This step enables updates to the source repo to trigger builds, and updates to the config repo to trigger deployments in Enterprise Application Service for Java. You will see the following panel:
 
     <div align="center">
         <img src="./images/saas-instance-intro.png">
@@ -362,7 +364,7 @@ For convenience, each student will be given authorization to access to the follo
         <img src="./images/saas-build-deploy-run.png">
     </div>
 
-    Click the **Build, Deploy & Run** option.
+    Click the **Build, Deploy & Run** option. (Note, the Deploy & Run option allows you to build your application in an existing CI pipeline and deploy it with Enterprise Application Service for Java).
 
     This will start a series of steps for you to setup and authorize access to your GitHub account and your application repos (**source** and **config**).
 
@@ -394,15 +396,17 @@ For convenience, each student will be given authorization to access to the follo
 
     Select the **techxchange2024** organization and click **Next**.
 
-    >**NOTE**: To use the EASeJ service, all GitHub repos must be assigned to a GitHub Organization.
+    >**NOTE**: To use Enterprise Application Service, all GitHub repos must be assigned to a GitHub Organization.
 
-1. Assign GitHub source and config repo
+1. Assign GitHub source and config repos
 
-    Select your student assigned source and configuration GitHub repositories and click **Next**.
+    Select your student assigned source GitHub repository and click **Next**.
 
     <div align="center">
         <img src="./images/saas-select-source-repo.png">
     </div>
+
+    Select your student assigned configuration GitHub repository and click **Next**.
 
     <div align="center">
         <img src="./images/saas-select-config-repo.png">
@@ -416,9 +420,9 @@ For convenience, each student will be given authorization to access to the follo
 
     Confirm your settings and click **Finish**.
 
-1. Navigate EASeJ console
+1. Navigate the Enterprise Application Service console
 
-    Once confirmed, you will see the EASeJ console.
+    Once confirmed, you will see the Enterprise Application Service console.
 
     <div align="center">
         <img src="./images/saas-home-screen.png">
@@ -432,9 +436,9 @@ For convenience, each student will be given authorization to access to the follo
 
     Note that the **Builds** menu options are related to your **source** code repo, and the **Configuration jobs** menu options are related to your **config** repo.
 
-### EASeJ flow process
+### Enterprise Application Service GitHub flow
 
-Once you confirmed your application repos, a **Release build** is automatically started.
+Once you configured your source repo, a **Release build** was automatically started.
 
 1. From the menu, select **Builds** -> **Release builds**.
 
@@ -442,7 +446,7 @@ Once you confirmed your application repos, a **Release build** is automatically 
         <img src="./images/saas-release-build-list.png">
     </div>
 
-    Click the **Build ID** to bring up the **Build log**.
+    Click the **Build ID** to bring up the **Build details**.
 
     <div align="center">
         <img src="./images/saas-release-build-log.png">
@@ -456,7 +460,7 @@ Once you confirmed your application repos, a **Release build** is automatically 
 
     In order to deploy, you will need to update the associated **config** repo, using the **Version ID** value displayed on the instructions page.
 
-1. Update config file with version ID
+1. Update staging config file with Release build version ID
    
     Using the editor directly in your GitHub config repo, edit the environments/staging/environment.yaml file.
 
@@ -474,11 +478,9 @@ Once you confirmed your application repos, a **Release build** is automatically 
         <img src="./images/github-propose-changes.png">
     </div>
 
-    Click **Propose changes** to create generate a pull request.
+    Click **Propose changes** then click the button to create a Pull Request.
 
-    Then click the button to create a Pull Request.
-
-    This will generate a **configuration job** event in the EASeJ console. This can be viewed by selecting the **Configuration jobs** -> **Configuration validations** menu option.
+    Creating the Pull Request will trigger Enterprise Application Service to run **Configuration validation** job. This can be viewed by selecting the **Configuration jobs** -> **Configuration validations** menu option.
 
     <div align="center">
         <img src="./images/saas-config-validation.png">
@@ -486,25 +488,27 @@ Once you confirmed your application repos, a **Release build** is automatically 
 
     Your GitHub PR panel will show that it is in a **Checks** phase until the validation check is complete. 
 
-    Once complete, merge and confirm your pull request into the **Main** branch of your repo.
+### Promote to staging environment and run application
 
-    The PR merge will generate a **deployment** event in the EASeJ console. This can be viewed by selecting the **Configuration jobs** -> **Deployments** menu option. [Note that this step may take a few minutes].
+Once the validation has completed successfully, merge the Pull Request into the **Main** branch of your repo.
+    
+Note: using Pull Requests is the recommended workflow.  This means you can have a peer review the changes and make the decision on whether they are correct and ready to merge.  Enterprise Application Service also has the same option for code changes.  Creating a Pull Request for code changes will trigger a Pull Request build where you can validate that the application builds and passes the tests (not just locally!). Merging the Pull Request triggers Enterprise Application Service to run a Release build, which we saw happen when the source repository was first configured. 
 
-    <div align="center">
+The PR merge will trigger Enterprise Application Service to run a **Deployment job** to deploy the Release into a Staging environment. The progress can be viewed by selecting the **Configuration jobs** -> **Deployments** menu option. [Note that this step may take a few minutes].
+
+<div align="center">
         <img src="./images/saas-config-deploy.png">
     </div>
 
-### Promote to staging environment and run application
+Upon succesful completion of the **Deployment**, Enterprise Application Service will automatically start the application in the **Staging** environment.
 
-Upon succesful completion of the **Deploy** phase, EASeJ will automatically start the **Staging** phase.
-
-1. Click **Environments** -> **Staging** to view the staging job.
+1. Click **Environments** -> **Staging** to view the Staging environment.
 
     <div align="center">
         <img src="./images/saas-staging.png">
     </div>
 
-    Note that the **Release build** number should match the latest **Deployment Job ID**. If you click the **Release build** number link, it will take you back to the corresponding **Deployment** job.
+    Note that the **Release build** link should take you to the release build that was deployed to Staging, and the **Deployment job** link will take you to the deployment job that deployed the release to Staging.
 
     At the bottom of the panel is a build log. For our ModResorts app, you can see here that it was successfully started:
 
@@ -512,7 +516,7 @@ Upon succesful completion of the **Deploy** phase, EASeJ will automatically star
         <img src="./images/saas-staging-log.png">
     </div>
 
-1. To launch the application, click on **Actions** -> **Open application**.
+1. To view the running application, click on **Actions** -> **Open application**.
 
     Initially, you will get a `404` error because a context path must be provided.
 
@@ -524,7 +528,7 @@ Upon succesful completion of the **Deploy** phase, EASeJ will automatically star
 
 ### Modify application source code
 
-Now that you know how the process works, lets make a change to the source repo and see what additional steps are required.
+Now that you know how the process works, let's make a change to the source repo to see that part of the workflow.
 
 1. Using the editor directly in your GitHub **source** repo, make a simple change to the **README.md** file. 
 
@@ -538,7 +542,7 @@ Now that you know how the process works, lets make a change to the source repo a
 
     Then click the button to create a **Pull Request**.
 
-2. This will generate a **PR build** event in the EASeJ console. This can be viewed by selecting the **Builds** -> **PR builds** menu option.
+2. This will trigger a **PR build** in Enterprise Application Service. This can be viewed by selecting the **Builds** -> **PR builds** menu option.  
 
     <div align="center">
         <img src="./images/saas-pr-build.png">
@@ -568,7 +572,7 @@ Now that you know how the process works, lets make a change to the source repo a
 
     If errors occurred, the **Build log** can help you track the issue.
 
-    Click on the **Downloads** tab to see the assets generated by the build.
+    Click on the **Downloads** tab to see the assets generated by the build. You will see that one of the files is a SLSA provenance json.  This provides information about the artefacts and build system used for the application and is useful to help protect against supply chain security exploitation attacks.
 
     <div align="center">
         <img src="./images/saas-release-build-downloads.png">
@@ -576,15 +580,15 @@ Now that you know how the process works, lets make a change to the source repo a
 
 ### Deploy the new version of the app
 
-Once the application changes have been merged and built, we need to update the associated **config** repo to deploy it.
+Once the application changes have been merged and built, we need to update the Staging **config** to deploy the new release.
 
 The steps required will follow the same flow as described above.
 
->**NOTE**: **[SaaS]** and **[GitHub]** indicates which UI you will be using to perform the step.
+>**NOTE**: **[Service]** and **[GitHub]** indicates which UI you will be using to perform the step, where **[Service]** is the Enterprise Application Service console and **[GitHub]** is the GitHub UI.
 
-1. **[SaaS]** Click the **Deploy to staging** button.
+1. **[Service]** Click the **Deploy to staging** button.
    
-2. **[SaaS]** Copy the **Version ID** value.
+2. **[Service]** Copy the **Version ID** value.
    
 3. **[GitHub]** Edit the **environments/staging/environment.yaml** file in your GitHub **config** repo.
    
@@ -594,14 +598,14 @@ The steps required will follow the same flow as described above.
    
 6. **[GitHub]** Click the button to create a **Pull Request**.
    
-7. **[SaaS]** The pull request will generate a **Validation** event. View the job by selecting the **Configuration jobs** -> **Configuration validations** menu option.
+7. **[Service]** The pull request will trigger a **Config validation** job. View the validation by selecting the **Configuration jobs** -> **Configuration validations** menu option.
    
-8. **[GitHub]** Once complete, merge and confirm your pull request into the Main branch of your GitHub **config** repo.
+8. **[GitHub]** Once complete, merge and confirm your Pull Request into the Main branch of your GitHub **config** repo.
    
-9. **[SaaS]** Merging the pull request will generate a **Deployment** event. View the job by selecting the **Configuration jobs** -> **Deployments** menu option.
+9. **[Service]** Merging the Pull Request will trigger a **Deployment**. View the deployment by selecting the **Configuration jobs** -> **Deployments** menu option.
     
-10. **[SaaS]** After successful completion of the **Deploy** phase, EASeJ will automatically start the **Staging** phase.
+10. **[Service]** After successful completion of the **Deployment**,  Enterprise Application Service will automatically start the application in the **Staging** environment.
     
-11. **[SaaS]** Click **Environments** -> **Staging** to view the staging job.
+11. **[Service]** Click **Environments** -> **Staging** to view the staging environment.
     
-12. **[SaaS]** Click on **Actions** -> **Open application** to view the application. [Don't forget to add the **/resorts** context to the URL]
+12. **[Service]** Click on **Actions** -> **Open application** to view the application. [Don't forget to add the **/resorts** context to the URL]
