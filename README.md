@@ -8,16 +8,16 @@ Modernization is essential to preserve the security and stability of your critic
 1. Enterprise Application Service for Java. This is a new managed service which provides an end-to-end application delivery experience, including DevOps, GitOps, build & delivery pipelines, running applications, and observability integration. Being a fully managed service, it insulates you from the infrastructure complexities so you can focus on delivering the code.
 2. Application Modernization Accelerator.  This tool enables you to discover existing enterprise applications and their database and messaging dependencies.  Assess the complexity of migration, plan a migration and then assist the migration (including database and messaging) through curated instructions, artefact generation and code rewrite rules.  Note, in the lab you will use an early driver which has the name Transformation Advisor.
 
-In this lab you will use Application Modernization Accelerator (hereafter referred to as Transformation Advisor) to create a migration plan that includes automatically generated configuration files and scripts, guidance and pointers to tools that are needed to accelerate and complete the migration. 
+In this lab you will use Application Modernization Accelerator to create a migration plan that includes automatically generated configuration files and scripts, guidance and pointers to tools that are needed to accelerate and complete the migration. 
  
 This migration plan will include: 
 - Details for the MQ administrator to configure the on-premises MQ network
 - Details for the Db2 administrator to transfer the data from the on-premises database to the new Db2 SaaS
 - Generated Liberty configuration files required to migrate the application
 
-Transformation Advisor can then automatically provision, configure and wire together the Enterprise Application Service, MQ and Db2 SaaS services to support the application running in the cloud.
+Application Modernization Accelerator can then automatically provision, configure and wire together the Enterprise Application Service, MQ and Db2 SaaS services to support the application running in the cloud.
  
-During the code remediation process, you will have the opportunity to utilize the services of WCA4EJA (watsonx Code Assistant for Enterprise Java Applications) to assist with code explanation, code completion, test generation, and also consume the output of Transformation Advisor to convert the application from WebSphere to Enterprise Application Service.
+During the code remediation process, you will have the opportunity to utilize the services of WCA4EJA (watsonx Code Assistant for Enterprise Java Applications) to assist with code explanation, code completion, test generation, and also consume the output of Application Modernization Accelerator to convert the application from WebSphere to Enterprise Application Service.
  
 The generated files are then brought into GitHub where Enterprise Application Service will build the application. Deterministic changes to the application source code can be fixed automatically using pre-defined rules. Other fixes are facilitated through Generative AI where you can interact in a guided manner with a Java-trained LLM and generated code can be added to the application source.
  
@@ -31,25 +31,25 @@ Enterprise Application Service has a built-in CI/CD workflow for delivering appl
 
 ## 1. Discovering applications and planning your migration
 
-Launch Transformation Advisor (TA) using the url **http:10.100.1.10:3000**:
+Launch Application Modernization Accelerator (AMA) using the url **http://wands1.fyre.ibm.com:3000**:
 
 ![ta-home-page](images/ta-home-page.png)
 
 ### Discovery tool
 
-A major capability of Transformation Advisor is discovery. The discovery tool is downloadable from TA and can be used on all major platforms:
+A major capability of Application Modernization Accelerator is discovery. The discovery tool is downloadable from AMA and can be used on all major platforms:
 
 ![ta-discovery-tool](images/ta-discovery-tool.png)
 
 The discovery tool can be executed on any system that you want analyzed. It will discover all of your relevant Java application runtimes (such as IBM WebSphere Application Server), and their database and messaging dependencies. The tools will also discover details about any discovered Db2 database instances.
 
-The result of the discovery is then automatically uploaded into Transformation Advisor as a **Workspace**.
+The result of the discovery is then automatically uploaded into Application Modernization Accelerator as a **Workspace**.
 
-For the convenience of this lab, we have already run the discovery tool, and the results are stored in the **demoData** workspace.
+For the convenience of this lab, we have already run the discovery tool, and the results are stored in the **Demo** workspace.
 
 ### Explore the Discovery tool results
 
-From the main TA panel, click on the workspace labelled **demoData**. This will display a topology map.
+From the main AMA panel, click on the workspace labelled **Demo**. This will display a topology map.
 
 ![ta-discovered-estate](images/ta-discovered-estate.png)
 
@@ -95,7 +95,7 @@ Click on the Assessment tab:
 
 ![ta-assessment-panel](images/ta-assessment-panel.png)
 
-For the **Migration target**, select **EASe for Java**. This is the IBM Enterprise Application Service for Java managed service where we wish to build and deploy the application.
+For the **Migration target**, select **Enterprise Application Service**. This is the IBM Enterprise Application Service for Java managed service where we wish to build and deploy the application.
 
 As you can see, the overall total development cost for the whole workload is 21 days.
 
@@ -131,7 +131,7 @@ Now that we have reviewed all the details of the ModResorts application, it stil
 - all dependencies (database and message queue) are not shared with 
 other applications.
 
-To start the migration, click the **Migration plan** button at the top of the panel.
+To start the migration, click the **View migration plan** button at the top of the panel.
 
 The Migration plan page contains all of the details about what will be included in your migration bundle:
 
@@ -139,13 +139,13 @@ The Migration plan page contains all of the details about what will be included 
 
 Click through and read the contents of each section (Note, some are placeholder instructions which are under development). 
 
-At the bottom of the **EASe for Java** section you can see a preview of the files that are provided. Click on the `server.xml` file to get a preview:
+In the **Enterprise Application Service** section, you can see on the right a list of the files that will be included. Click on the `server.xml` file to get a preview:
 
 ![ta-server-xml](images/ta-server-xml.png)
 
 This is the starting configuration used to run the server and application locally during development and local testing.
 
-At the top left side of the panel, click the **Manage dependencies** button:
+At the top left side of the panel, click the **Dependency endpoints** button:
 
 ![ta-manage-dependencies](images/ta-manage-dependencies.png)
 
@@ -153,7 +153,7 @@ This panel shows all the dependencies that are part of this migration plan. If y
 
 For this lab we will be modernizing all of the dependencies.
 
-[Click on Create project in IBM Cloud. Nothing happens. This feature is not implemented in this driver, but when complete it will create a Cloud project and stand up and configure service instances for the application, databases and message queues defined in the migration plan. From there you can customize the instances to suit your needs.]
+>**NOTE**: At the top of the panel is a button labled **Create project in IBM Cloud**. If you click it, nothing happens. This feature is not implemented in this driver, but when complete it will create a Cloud project and stand up and configure service instances for the application, databases and message queues defined in the migration plan. From there you can customize the instances to suit your needs.
 
 At the top right side of the panel, click the **Download plan** button. This will result in a zip file being downloaded to your local system.
 
@@ -223,10 +223,10 @@ First, let’s start with **Eclipse IDE**. Locate and launch the Eclipse IDE fro
     </div>
 
 5.  WCA has two options to migrate the project to Liberty:
-    1.  **Upload the migration bundle** exported for Transformation Advisor, which will provide watsonx Code Assistant with the artefacts required to migrate the application.
+    1.  **Upload the migration bundle** exported for Application Modernization Accelerator, which will provide watsonx Code Assistant with the artefacts required to migrate the application.
     2. Use the **binary scanner** if a migration bundle is not available. 
  
-    Note that using the migration bundle is recommended because it has been generated with the configuration information from where the Java application is running, while the binary scanner will not be able to obtain this information. The migration bundle option will be used in this lab. Please locate and open the bundle zip file you built and downloaded using `Transformation Advisor`.
+    Note that using the migration bundle is recommended because it has been generated with the configuration information from where the Java application is running, while the binary scanner will not be able to obtain this information. The migration bundle option will be used in this lab. Please locate and open the bundle zip file you built and downloaded using `Application Modernization Accelerator`.
 
     <div align="center">
         <img src="./images/wca-start-modernize-msg.png">
@@ -242,7 +242,7 @@ First, let’s start with **Eclipse IDE**. Locate and launch the Eclipse IDE fro
         <img src="./images/wca-add-files.png">
     </div>
 
-7.  Next, a modernization issues list will be presented with the must fix issue detected by watsonx Code Assistant for Enterprise Java Applications. You can review each issue in detail by clicking on the expand button on the right-hand side of each item. The **Additional information** tab highlights other issues you should be aware of when migrating your application, though these do not require code changes. After the review is complete, click the **Run auto-fixes** button to apply the automated changes (Note, these are the same `rewrite` changes you could have applied using maven and gradle with the configuration from Transformation Advisor. Applying them in WCA is easier as it doesn't require you to customize and run a build).
+7.  Next, a modernization issues list will be presented with the must fix issue detected by watsonx Code Assistant for Enterprise Java Applications. You can review each issue in detail by clicking on the expand button on the right-hand side of each item. The **Additional information** tab highlights other issues you should be aware of when migrating your application, though these do not require code changes. After the review is complete, click the **Run auto-fixes** button to apply the automated changes (Note, these are the same `rewrite` changes you could have applied using maven and gradle with the configuration from Application Modernization Accelerator. Applying them in WCA is easier as it doesn't require you to customize and run a build).
 
     <div align="center">
         <img src="./images/wca-issues-list-sm.png">
