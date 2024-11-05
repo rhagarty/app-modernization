@@ -311,7 +311,7 @@ Now that we have modernized our ModResorts application to use the Java **Liberty
 
 ### Add the ModResorts application to your GitHub account
 
-EASeJ requires that the application be contained in a GitHub organization and repository. To save time and eliminate any mistakes made in the previous steps, the **source** repository of the Liberty-ready ModResorts app is available for you to copy. To copy the application into your GitHub account, perform the following steps:
+EASeJ requires that the application be contained in a GitHub organization and repository. To save time and eliminate any mistakes made in the previous steps, the **source** and **configuration** repository of the Liberty-ready ModResorts app is available for you to copy. To copy the application and its associated configuration repo into your GitHub account, perform the following steps:
 
 1. Login to your GitHub account
 2. Click on your profile picture and then select **Your Organizations**
@@ -326,11 +326,11 @@ EASeJ requires that the application be contained in a GitHub organization and re
     <div align="center">
         <img src="./images/github-organization.png">
     </div>
-10. To create our ModResorts application repo, click the **Import** button located at the bottom right under **Repositories**
+10. To create your ModResorts application repo, click the **Import** button located at the bottom right under **Repositories**
 11. On the **Import** panel, enter the following:
     - Source URL - https://github.com/techxchange2024/student-source-template
     - Username/password - your credentials
-    - New repository owner - your organization you just created
+    - New repository owner - from the drop-down list, select the organization you just created
     - Repository name - a unique name (e.g. **mod-resorts-source**)
     - Make the new repository **Public**
 
@@ -339,7 +339,7 @@ EASeJ requires that the application be contained in a GitHub organization and re
     - Source URL - https://github.com/techxchange2024/student-config-template
     - Repository name - a unique name (e.g. **mod-resorts-config**)
 
-Once completed, you should have a Organization with 2 Repositories.
+Once completed, you should have an **Organization** with 2 **Repositories**.
 
 <div align="center">
         <img src="./images/github-org-repos.png">
@@ -347,29 +347,37 @@ Once completed, you should have a Organization with 2 Repositories.
 
 ### Access your Enterprise Application Service service instance
 
-1. Use this link to start:
+1. Login to IBM Cloud using your IBM ID authorized email address:
 
-    https://ibm-cloud.console.saas.ibm.com
-
-    <div align="center">
-        <img src="./images/saas-accounts.png">
-    </div>
-
-    Click on the **techxchange2024-saas** tile to view the account details.
-
-1. Click the **View instances** link to bring up the **Instance** list.
+    https://cloud.ibm.com
 
     <div align="center">
-        <img src="./images/saas-subscription-details.png">
+        <img src="./images/ibm-cloud-login.png">
     </div>
 
-1. Select your instance (it should be the only one with a clickable link).
+2. From the IBM Cloud dashboard, click the **Catalog** toolbar button.
 
     <div align="center">
-        <img src="./images/saas-instance-list.png">
+        <img src="./images/ibm-cloud-dashboard.png">
     </div>
 
-    From the list of instances, **Open** the instance associated with your student number.
+3. From the alphabetically sorted list of catalog tiles, click the **Enterprise Application Server** tile.
+
+    <div align="center">
+        <img src="./images/ibm-cloud-catalog.png">
+    </div>
+
+4. You will then be asked to create a free trial serivce instance of EASeJ. Accept all the default values, agree to the terms, and click **Create** to create your instance. **NOTE**: you can modify the **Service name** to make it easier to remember.
+
+    <div align="center">
+        <img src="./images/ibm-easej-instance.png">
+    </div>
+
+Note that once created, you can access this service instance from the IBM Cloud **Resource list** panel.
+
+<div align="center">
+    <img src="./images/ibm-cloud-resources.png">
+</div>
 
 ### Configure GitHub repos for your Enterprise Application Service service instance
 
@@ -397,7 +405,7 @@ Once completed, you should have a Organization with 2 Repositories.
         <img src="./images/saas-authorize-github.png">
     </div>
 
-    Click **Authorize access to GitHub** and enter your GitHub account information. 
+    Click **Authorize access to GitHub** and enter your GitHub account credentials. 
     
     <div align="center">
         <img src="./images/saas-github-authorize.png">
@@ -409,17 +417,47 @@ Once completed, you should have a Organization with 2 Repositories.
         <img src="./images/saas-github-authorized.png">
     </div>
 
-1. Select an organization
+1. Select an organization. Your newly created organization will not appear in the drop-down list, so click the **Can't find organization?** link.
+
+    <div align="center">
+        <img src="./images/saas-find-github-org.png">
+    </div>
+
+    Next, click the **Select organization** button.
+
+    This will bring up a series of windows that will allow you to install the **IBM Enterprise Application Service** GitHub app into your GitHub organization.
+
+    <div align="center">
+        <img src="./images/github-app-config.png">
+    </div>
+
+    Click **Configure**.
+
+    <div align="center">
+        <img src="./images/github-app-config-2.png">
+    </div>
+
+    Select your new **Organization** name.
+
+    <div align="center">
+        <img src="./images/github-app-config-3.png">
+    </div>
+
+    Select **All repositories** and click **Install**.
+
+    If you are asked to authenticate your GitHub account, enter your credentials to complete the install.
+
+    Now your organization should appear in the drop-down list.
 
     <div align="center">
         <img src="./images/saas-select-org.png">
     </div>
 
-    Select the **techxchange2024** organization and click **Next**.
+    Select your organization and click **Next**.
 
     >**NOTE**: To use Enterprise Application Service, all GitHub repos must be assigned to a GitHub Organization.
 
-1. Assign GitHub source and config repos
+2. Assign GitHub source and config repos
 
     Select your student assigned source GitHub repository and click **Next**.
 
@@ -433,7 +471,7 @@ Once completed, you should have a Organization with 2 Repositories.
         <img src="./images/saas-select-config-repo.png">
     </div>
 
-1. Confirm GitHub settings
+3. Confirm GitHub settings
 
     <div align="center">
         <img src="./images/saas-config-summary.png">
@@ -441,7 +479,9 @@ Once completed, you should have a Organization with 2 Repositories.
 
     Confirm your settings and click **Finish**.
 
-1. Navigate the Enterprise Application Service console
+    **NOTE**: If you encounter an error, please click **Finish** and confirm again. This known error will be fixed in the next release.
+
+4. Navigate the Enterprise Application Service console
 
     Once confirmed, you will see the Enterprise Application Service console.
 
@@ -456,6 +496,12 @@ Once completed, you should have a Organization with 2 Repositories.
     </div>
 
     Note that the **Builds** menu options are related to your **source** code repo, and the **Configuration jobs** menu options are related to your **config** repo.
+
+    The **Settings** menu option displays service details as well as your GitHub organization and repo selections.
+
+    <div align="center">
+        <img src="./images/saas-home-settings.png">
+    </div>
 
 ### Enterprise Application Service GitHub flow
 
@@ -480,6 +526,8 @@ Once you configured your source repo, a **Release build** was automatically star
     </div>
 
     In order to deploy, you will need to update the associated **config** repo, using the **Version ID** value displayed on the instructions page.
+
+    Click the **copy** button to save off the version ID value.
 
 1. Update staging config file with Release build version ID
    
@@ -531,13 +579,15 @@ Upon succesful completion of the **Deployment**, Enterprise Application Service 
 
     Note that the **Release build** link should take you to the release build that was deployed to Staging, and the **Deployment job** link will take you to the deployment job that deployed the release to Staging.
 
-    At the bottom of the panel is a build log. For our ModResorts app, you can see here that it was successfully started:
+    At the bottom of the panel is a build log. For our ModResorts app, you can see here that it was successfully started. 
+    
+    It also provides a button to **Deploy to production**.
 
     <div align="center">
         <img src="./images/saas-staging-log.png">
     </div>
 
-1. To view the running application, click on **Actions** -> **Open application**.
+1. To view the running application, return to the **Environments -> Staging** panel and click on **Actions** -> **Open application**.
 
     Initially, you will get a `404` error because a context path must be provided.
 
