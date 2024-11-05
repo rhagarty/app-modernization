@@ -159,7 +159,7 @@ At the top right side of the panel, click the **Download plan** button. This wil
 
 ![ta-download-plan](images/ta-download-plan.png)
 
-You can explode this zip file bundle to see all the artifacts that TA provides, including a **README** file that gives you step by step instructions on how to use the bundle. You will use this bundle in the next section of the lab.
+You can explode this zip file bundle to see all the artifacts that AMA provides, including a **README** file that gives you step by step instructions on how to use the bundle. You will use this bundle in the next section of the lab.
 
 ## 2. Updating the application to run on Enterprise Application Service for Java
 
@@ -307,22 +307,43 @@ First, let’s start with **Eclipse IDE**. Locate and launch the Eclipse IDE fro
 
 ## 3. Deploy application to cloud using IBM Enterprise Application Service for Java
 
-Now that we have modernized our ModResorts application to use the Java **Liberty Runtime**, we can build and deploy it in Enterprise Application Service for Java.
+Now that we have modernized our ModResorts application to use the Java **Liberty Runtime**, we can build and deploy it in Enterprise Application Service for Java (**EASeJ**).
 
-Provide the instructor with your email address associated with your GitHub account. You will then be assigned a student number that you can use throughout this section of the lab.
+### Add the ModResorts application to your GitHub account
 
-For convenience, each student will be given authorization to access the following:
+EASeJ requires that the application be contained in a GitHub organization and repository. To save time and eliminate any mistakes made in the previous steps, the **source** repository of the Liberty-ready ModResorts app is available for you to copy. To copy the application into your GitHub account, perform the following steps:
 
-- GitHub Organization - **techxchange2024**
-- GitHub **source** repo - **student-source-{number}**
-- GitHub **config** repo - **student-config-{number}**
-- IBM SaaS account - **techxchange2024-saas**
-- IBM Enterprise Application Service subscription - **Application Flow**
-- IBM Enterprise Application Service service instance - **student-{number}**
+1. Login to your GitHub account
+2. Click on your profile picture and then select **Your Organizations**
+3. Click the **New organization** button
+4. Select the **Free** option
+5. Enter a unique name (e.g. **easej-testing**), your contact email, and select **My personal account**
+6. Accept the terms and click **Next**
+7. Click **Complete setup** to create the organization
+8. If you are asked to authenticate your account, provide the proper credentials
+9. If successful, you should see your Organization home page:
 
->**NOTE**: To save time and eliminate any mistakes made in the previous step, the **source** repository already contains the ModResorts app with the changes applied to run on Liberty.
+    <div align="center">
+        <img src="./images/github-organization.png">
+    </div>
+10. To create our ModResorts application repo, click the **Import** button located at the bottom right under **Repositories**
+11. On the **Import** panel, enter the following:
+    - Source URL - https://github.com/techxchange2024/student-source-template
+    - Username/password - your credentials
+    - New repository owner - your organization you just created
+    - Repository name - a unique name (e.g. **mod-resorts-source**)
+    - Make the new repository **Public**
 
->**IMPORTANT**: You will receive an email regarding access to the **techxchange2024** GitHub Organization. You must accept the invitation in order to complete this section of the lab.
+    Click the **Begin import** button to create the repo.
+12. Repeat the previous 2 steps, but this time for the **config** repo:
+    - Source URL - https://github.com/techxchange2024/student-config-template
+    - Repository name - a unique name (e.g. **mod-resorts-config**)
+
+Once completed, you should have a Organization with 2 Repositories.
+
+<div align="center">
+        <img src="./images/github-org-repos.png">
+    </div>
 
 ### Access your Enterprise Application Service service instance
 
