@@ -680,3 +680,19 @@ The steps required will follow the same flow as described above.
 11. **[Service]** Click **Environments** -> **Staging** to view the staging environment.
     
 12. **[Service]** Click on **Actions** -> **Open application** to view the application. [Don't forget to add the **/resorts** context to the URL]
+
+### Promote to production
+
+Finally, to promote your application to production, you can go to **Environments -> Staging**, then click on **Deploy to application**.
+
+<div align="center">
+    <img src="./images/saas-deploy-production.png">
+</div>
+
+Here you will see the detailed steps you will need to follow.
+
+<div align="center">
+    <img src="./images/saas-production.png">
+</div>
+
+Attempt to complete these steps on your own. If successful, you will see the application listed under **Environments -> Production**.
