@@ -361,7 +361,7 @@ Once completed, you should have an **Organization** with 2 **Repositories**.
         <img src="./images/ibm-cloud-dashboard.png">
     </div>
 
-3. From the alphabetically sorted list of catalog tiles, click the **Enterprise Application Server** tile.
+3. From the alphabetically sorted list of catalog tiles, click the **Enterprise Application Service** tile.
 
     <div align="center">
         <img src="./images/ibm-cloud-catalog.png">
