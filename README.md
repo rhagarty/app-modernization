@@ -617,7 +617,7 @@ Now that you know how the process works, let's make a change to the source repo 
         <img src="./images/github-propose-changes.png">
     </div>
 
-    Then click the button to create a **Pull Request**.
+    Click **Propose changes**, and then click the button to create a **Pull Request**.
 
 2. This will trigger a **PR build** in Enterprise Application Service. This can be viewed by selecting the **Builds** -> **PR builds** menu option.  
 
