@@ -577,11 +577,17 @@ Upon succesful completion of the **Deployment**, Enterprise Application Service 
         <img src="./images/saas-staging.png">
     </div>
 
-    Note that the **Release build** link should take you to the release build that was deployed to Staging, and the **Deployment job** link will take you to the deployment job that deployed the release to Staging.
+    Note that this panel contains multiple links:
+    
+    - The **Release build** link should take you to the release build that was deployed to Staging. 
+    - The **Deployment job** link will take you to the deployment job that deployed the release to Staging.
+    - The **Open Application** button is used to start a new browser tab and link to the application URL (we will use this in the next step).
 
+    Click on the **Release build** link to bring up the **Build** panel.
+    
     At the bottom of the panel is a build log. For our ModResorts app, you can see here that it was successfully started. 
     
-    It also provides a button to **Deploy to production**.
+    It also provides a button to **Deploy to production**, which will be discussed in a later step.
 
     <div align="center">
         <img src="./images/saas-staging-log.png">
