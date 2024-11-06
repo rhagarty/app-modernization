@@ -309,6 +309,8 @@ First, let’s start with **Eclipse IDE**. Locate and launch the Eclipse IDE fro
 
 Now that we have modernized our ModResorts application to use the Java **Liberty Runtime**, we can build and deploy it in Enterprise Application Service for Java (**EASeJ**).
 
+>**NOTE**: If you run into any issues, see [Troubleshooting](#troubleshooting) section at the bottom of this page.
+
 ### Add the ModResorts application to your GitHub account
 
 EASeJ requires that the application be contained in a GitHub organization and repository. To save time and eliminate any mistakes made in the previous steps, the **source** and **configuration** repository of the Liberty-ready ModResorts app is available for you to copy. To copy the application and its associated configuration repo into your GitHub account, perform the following steps:
@@ -689,7 +691,7 @@ The steps required will follow the same flow as described above.
 
 ### Promote to production
 
-Finally, to promote your application to production, you can go to **Environments -> Staging**, then click on **Deploy to application**.
+Finally, to promote your application to production, you can go to **Environments -> Staging**, then click on **Deploy to production**.
 
 <div align="center">
     <img src="./images/saas-deploy-production.png">
@@ -702,3 +704,16 @@ Here you will see the detailed steps you will need to follow.
 </div>
 
 Attempt to complete these steps on your own. If successful, you will see the application listed under **Environments -> Production**.
+
+## Troubleshooting
+
+The Enterprise Application Service for Java component of this lab has not yet been released and does have some connection issues that still need to be resolved. If you click on a panel and see any type of **Error** message at the top of the page, do the following:
+
+(These steps assume using Chrome - other browsers will be similar)
+
+- Click the 3 dots in the upper right corner of your browser window
+- Click "Delete Browsing Data..."
+- Select "Last hour" from the time range drop-down and make sure all checkmark boxes are checked
+- Click the "Delete data" button
+- Refresh the brower webpage for https://cloud.ibm.com
+- From the IBM Cloud dashboard, click on **Resource list**, expand the **Compute** table entry, and select your EASeJ instance.
