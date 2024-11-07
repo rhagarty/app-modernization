@@ -77,7 +77,7 @@ Type **acme** in the field:
 
 Here you see all the nodes associated with the **Acme** workload. As you can see, this is a very complex system, with multiple applications using multiple message queues and databases. You can use the dependency information to help you to decide where to start with modernization. Further details to help with this decision are also available and will be seen later. 
 
-For the purpose of this lab, we will work on a simpler workload. This is how you would typically start a modernization project.  Starting simple helps you learn the tools and technologies.  Replace the field field with **mod**.
+For the purpose of this lab, we will work on a simpler workload. This is how you would typically start a modernization project.  Starting simple helps you learn the tools and technologies.  Replace the field with **mod**.
 
 ![ta-mod-capability](images/ta-mod-capability.png)
 
@@ -315,7 +315,7 @@ Now that we have modernized our ModResorts application to use the Java **Liberty
 
 EASeJ requires that the application be contained in a GitHub organization and repository. To save time and eliminate any mistakes made in the previous steps, the **source** and **configuration** repository of the Liberty-ready ModResorts app is available for you to copy. To copy the application and its associated configuration repo into your GitHub account, perform the following steps:
 
-1. Login to your GitHub account
+1. Login to your personal GitHub account (**NOT IBM Enterprise GitHub**)
 2. Click on your profile picture and then select **Your Organizations**
 3. Click the **New organization** button
 4. Select the **Free** option
@@ -703,7 +703,10 @@ Here you will see the detailed steps you will need to follow.
     <img src="./images/saas-production.png">
 </div>
 
-Attempt to complete these steps on your own. If successful, you will see the application listed under **Environments -> Production**.
+1. In your **config** repo, copy the contents of your "/environments/staging/environment.yaml" file into a new file - "/environments/production/environment.yaml".
+2. Create a branch PR and merge the changes.
+3. Monitor the progress by checking the **Configuration jobs -> Config validations** and **Deployments** panels.
+4. If successful, you will see the application listed under **Environments -> Production**.
 
 ## Troubleshooting
 
