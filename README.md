@@ -587,7 +587,7 @@ Upon succesful completion of the **Deployment**, Enterprise Application Service 
 
     Click on the **Release build** link to bring up the **Build** panel.
     
-    At the bottom of the panel is a build log. For our ModResorts app, you can see here that it was successfully started. 
+    At the bottom of the panel is a build log. For our ModResorts app, you can see here that it was successfully built. 
     
     It also provides a button to **Deploy to production**, which will be discussed in a later step.
 
@@ -596,10 +596,6 @@ Upon succesful completion of the **Deployment**, Enterprise Application Service 
     </div>
 
 1. To view the running application, return to the **Environments -> Staging** panel and click on **Actions** -> **Open application**.
-
-    Initially, you will get a `404` error because a context path must be provided.
-
-    Add **/resorts** to the end of the URL to provide the proper path.
 
     <div align="center">
         <img src="./images/saas-modresorts.png">
@@ -687,7 +683,7 @@ The steps required will follow the same flow as described above.
     
 11. **[Service]** Click **Environments** -> **Staging** to view the staging environment.
     
-12. **[Service]** Click on **Actions** -> **Open application** to view the application. [Don't forget to add the **/resorts** context to the URL]
+12. **[Service]** Click on **Actions** -> **Open application** to view the application. 
 
 ### Promote to production
 
